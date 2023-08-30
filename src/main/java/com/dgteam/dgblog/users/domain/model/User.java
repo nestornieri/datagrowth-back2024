@@ -12,7 +12,7 @@ public class User {
 
     private String nombre;
     private String email;
-    private String contrasenia;
+    private String contrasena;
 
 
     public Long getId() {
@@ -39,12 +39,13 @@ public class User {
         this.email = email;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     @Override
@@ -53,7 +54,7 @@ public class User {
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", email='" + email + '\'' +
-                ", contrasenia='" + contrasenia + '\'' +
+                ", contrasena='" + contrasena + '\'' +
                 '}';
     }
 }
