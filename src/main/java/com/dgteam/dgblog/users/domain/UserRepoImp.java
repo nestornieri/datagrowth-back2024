@@ -8,11 +8,12 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class UserRepoImp   {
+public class UserRepoImp {
 
-    @Autowired
-    private UserService userService;
-    public Optional<User> getUser(Long id) {
-        return userService.getUserById(id);
-    }
+	@Autowired
+	private UserService userService;
+
+	public Optional<User> getUser(Long id) {
+		return userService.getUserById(id);
+	}
 }
