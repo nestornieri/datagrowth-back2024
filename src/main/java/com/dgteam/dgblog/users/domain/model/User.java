@@ -1,6 +1,10 @@
 package com.dgteam.dgblog.users.domain.model;
 
+import com.dgteam.dgblog.publications.domain.model.applications;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "usuarios")
@@ -57,4 +61,6 @@ public class User {
                 ", contrasena='" + contrasena + '\'' +
                 '}';
     }
+
 }
+
