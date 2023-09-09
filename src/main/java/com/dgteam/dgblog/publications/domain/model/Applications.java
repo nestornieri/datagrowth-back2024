@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "publicaciones")
-public class applications {
+public class Applications {
 
 
     @Id

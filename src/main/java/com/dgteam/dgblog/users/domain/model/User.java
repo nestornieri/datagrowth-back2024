@@ -1,6 +1,6 @@
 package com.dgteam.dgblog.users.domain.model;
 
-import com.dgteam.dgblog.publications.domain.model.applications;
+import com.dgteam.dgblog.publications.domain.model.Applications;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;

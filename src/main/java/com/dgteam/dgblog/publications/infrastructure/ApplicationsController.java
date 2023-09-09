@@ -1,6 +1,6 @@
 package com.dgteam.dgblog.publications.infrastructure;
 
-import com.dgteam.dgblog.publications.domain.model.applications;
+import com.dgteam.dgblog.publications.domain.model.Applications;
 import com.dgteam.dgblog.publications.domain.service.ApplicationsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +25,8 @@ import java.util.Optional;
         }
 
     @GetMapping("/{id}") // Mapeo para obtener una aplicación por su ID
-    public ResponseEntity<applications> obtenerApplicationPorId(@PathVariable Long id) {
-        Optional<applications> application = applicationsService.obtenerApplicationsPorId(id);
+    public ResponseEntity<Applications> obtenerApplicationPorId(@PathVariable Long id) {
+        Optional<Applications> application = applicationsService.obtenerApplicationsPorId(id);
 
         if (application.isPresent()) {
             return ResponseEntity.ok(application.get());
