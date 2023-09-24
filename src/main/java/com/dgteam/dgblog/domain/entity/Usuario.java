@@ -1,4 +1,4 @@
-package com.dgteam.dgblog.persistence.entity;
+package com.dgteam.dgblog.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,6 +18,7 @@ public class Usuario {
     private String nombre;
     private String email;
     private String contrasena;
+    
 	public Integer getId() {
 		return id;
 	}

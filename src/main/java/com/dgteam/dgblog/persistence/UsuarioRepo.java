@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.dgteam.dgblog.persistence.crud.IUsuarioRepo;
-import com.dgteam.dgblog.persistence.entity.Usuario;
+import com.dgteam.dgblog.domain.entity.Usuario;
 
 @Repository
 public class UsuarioRepo {
+	
 	private IUsuarioRepo iUserRepo;
 	
     public List<Usuario> getAll(){

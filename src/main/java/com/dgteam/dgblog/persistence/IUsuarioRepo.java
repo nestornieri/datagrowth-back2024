@@ -1,10 +1,9 @@
-package com.dgteam.dgblog.persistence.crud;
+package com.dgteam.dgblog.persistence;
 
-import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.dgteam.dgblog.persistence.entity.Usuario;
+import com.dgteam.dgblog.domain.entity.Usuario;
 
 public interface IUsuarioRepo  extends CrudRepository<Usuario, Integer>{
 

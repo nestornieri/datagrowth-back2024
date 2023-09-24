@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dgteam.dgblog.domain.entity.Usuario;
 import com.dgteam.dgblog.domain.service.UsuarioService;
-import com.dgteam.dgblog.persistence.entity.Usuario;
 
 @RestController
 @RequestMapping("/usuario")
