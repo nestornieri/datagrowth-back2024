@@ -14,5 +14,10 @@ public class UsuarioRepo {
     public List<Usuario> getAll(){
         return (List<Usuario>) iUserRepo.findAll();
     }
+    
+    public Usuario guardar(Usuario usuario) {
+		return iUserRepo.save(usuario);
+    	
+    }
 
 }
