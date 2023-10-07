@@ -19,12 +19,13 @@ public class Usuario {
     private String email;
     private String contrasena;
     
-	public Integer getId() {
+		public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -43,6 +44,7 @@ public class Usuario {
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
+
     
     
 
