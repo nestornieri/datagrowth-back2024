@@ -24,7 +24,7 @@ public class Publicaciones {
     private String titulo;
     private String contenido;
     private Timestamp fecha_publicacion;
-   // @ManyToOne
+    //@ManyToOne
     //@JoinColumn(name = "autor_id", referencedColumnName = "id")
     private Integer autor_id;
     //hasta donde se entiende referencedColumnName , debe hacer referencia 
@@ -68,6 +68,9 @@ public class Publicaciones {
     public void setAutor_id(Integer autor_id) {
         this.autor_id = autor_id;
     }
+
+  
+
 
     
 
