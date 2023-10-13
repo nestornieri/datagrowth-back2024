@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +31,7 @@ public class ComentariosController {
     public Optional<Comentarios> ListarPorIdComentarios(@RequestParam Integer id) {
         return  serviceComentarios.obterPorIdComentarios(id);
     }
-    @GetMapping("/NuevoComentario")
+    @PostMapping("/NuevoComentario")
     public Comentarios NuevoComentario(@RequestBody Comentarios NuevoComentario) {
         return  serviceComentarios.insertarComentario(NuevoComentario);
     }
