@@ -7,5 +7,5 @@ import com.dgteam.dgblog.domain.entity.Usuario;
 
 public interface IUsuarioRepo  extends CrudRepository<Usuario, Integer>{
 
-
+  boolean existsByEmail(String email);
 }

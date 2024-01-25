@@ -30,4 +30,8 @@ public class UsuarioRepo {
         iUserRepo.deleteById(id);
     }
 
+    public boolean existEmail(String email) {
+        return iUserRepo.existsByEmail(email);
+    }
+
 }
