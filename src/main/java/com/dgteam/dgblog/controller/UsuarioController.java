@@ -38,7 +38,7 @@ public class UsuarioController {
         }
     }
 
-    @PostMapping("/createUser")
+    @PostMapping("/usuario")
     public ResponseEntity<?> save(@RequestBody Usuario usuario) {
         // Verificar si el correo electrónico ya existe
         if (usuarioService.existsByEmail(usuario.getEmail())) {
@@ -55,7 +55,7 @@ public class UsuarioController {
         }
     }
 
-    @PutMapping("/updateUser")
+    @PutMapping("/usuario")
     public ResponseEntity<Usuario> update(@RequestBody Usuario usuario) {
         Usuario savedUsuario = usuarioService.save(usuario);
 
@@ -66,7 +66,7 @@ public class UsuarioController {
         }
     }
 
-    @GetMapping("/getUser")
+    @GetMapping("/usuario")
     public ResponseEntity<Usuario> getUserById(@RequestParam("id") int id) {
         Optional<Usuario> optionalUsuario = usuarioService.getId(id);
 
@@ -77,7 +77,7 @@ public class UsuarioController {
         }
     }
 
-    @DeleteMapping("/deleteUser")
+    @DeleteMapping("/usuario")
     public ResponseEntity<Void> deleteById(@RequestParam("id") int id) {
         Optional<Usuario> optionalUsuario = usuarioService.getId(id);
 
