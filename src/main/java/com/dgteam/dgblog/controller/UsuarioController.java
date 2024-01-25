@@ -39,9 +39,15 @@ public class UsuarioController {
     }
 
     @PostMapping("/createUser")
-    public ResponseEntity<Usuario> save(@RequestBody Usuario usuario) {
-        Usuario savedUsuario = usuarioService.save(usuario);
+    public ResponseEntity<?> save(@RequestBody Usuario usuario) {
+        // Verificar si el correo electrónico ya existe
+        if (usuarioService.existsByEmail(usuario.getEmail())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("El correo electrónico ya está registrado.");
+        }
 
+        // Si el correo electrónico no existe, intentar guardar el usuario
+        Usuario savedUsuario = usuarioService.save(usuario);
         if (savedUsuario != null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(savedUsuario);
         } else {
