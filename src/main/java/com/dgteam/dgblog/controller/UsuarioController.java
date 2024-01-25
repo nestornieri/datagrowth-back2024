@@ -27,7 +27,7 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @GetMapping("/Listusuarios")
+    @GetMapping("/usuarios")
     public ResponseEntity<List<Usuario>> getAll() {
         List<Usuario> usuarios = usuarioService.getAll();
 
@@ -38,7 +38,7 @@ public class UsuarioController {
         }
     }
 
-    @PostMapping("/Crearusuarios")
+    @PostMapping("/createUser")
     public ResponseEntity<Usuario> save(@RequestBody Usuario usuario) {
         Usuario savedUsuario = usuarioService.save(usuario);
 
@@ -49,7 +49,7 @@ public class UsuarioController {
         }
     }
 
-    @PutMapping("/ActualizarUsuario")
+    @PutMapping("/updateUser")
     public ResponseEntity<Usuario> update(@RequestBody Usuario usuario) {
         Usuario savedUsuario = usuarioService.save(usuario);
 
@@ -60,7 +60,7 @@ public class UsuarioController {
         }
     }
 
-    @GetMapping("/BuscarPorId")
+    @GetMapping("/getUser")
     public ResponseEntity<Usuario> getUserById(@RequestParam("id") int id) {
         Optional<Usuario> optionalUsuario = usuarioService.getId(id);
 
@@ -71,7 +71,7 @@ public class UsuarioController {
         }
     }
 
-    @DeleteMapping("/DeleteUsuario")
+    @DeleteMapping("/deleteUser")
     public ResponseEntity<Void> deleteById(@RequestParam("id") int id) {
         Optional<Usuario> optionalUsuario = usuarioService.getId(id);
 
