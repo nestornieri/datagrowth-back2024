@@ -3,6 +3,7 @@ package com.dgteam.dgblog.domain.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.dgteam.dgblog.persistence.UsuarioRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,23 +16,23 @@ import com.dgteam.dgblog.persistence.IUsuarioRepo;
 public class UsuarioService {
 	
 	@Autowired
-	private IUsuarioRepo iUsuarioRepo;
+	private UsuarioRepo usuarioRepo;
 	
 
 	public List<Usuario> getAll() {
-		return (List<Usuario>) iUsuarioRepo.findAll();		
+		return (List<Usuario>) usuarioRepo.getUsers();
 	}
 	
 	public Usuario save(Usuario usuario) {
-		return iUsuarioRepo.save(usuario);
+		return usuarioRepo.createUser(usuario);
 	}
 	
 	public Optional<Usuario> getId(int id) {
-		return iUsuarioRepo.findById(id);
+		return usuarioRepo.getUser(id);
 	}
 	
 	public void deleteById(int id) {
-		iUsuarioRepo.deleteById(id);
+		usuarioRepo.deleteUser(id);
 	}
 
 	
