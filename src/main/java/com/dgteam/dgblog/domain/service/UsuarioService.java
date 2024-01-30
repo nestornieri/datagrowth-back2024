@@ -35,7 +35,9 @@ public class UsuarioService {
 		usuarioRepo.deleteUser(id);
 	}
 
-	
+	public boolean existsByEmail(String email) {
+		return usuarioRepo.existEmail(email);
+	}
 
 
 }

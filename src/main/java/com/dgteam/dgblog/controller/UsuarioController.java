@@ -28,57 +28,59 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping("/usuarios")
-    public ResponseEntity<List<Usuario>> getAll() {
+    public ResponseEntity<ApiResponse> getAll() {
         List<Usuario> usuarios = usuarioService.getAll();
 
         if (!usuarios.isEmpty()) {
-            return ResponseEntity.ok(usuarios);
+            return ResponseEntity.ok(new ApiResponse("Success", usuarios));
         } else {
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.status(HttpStatus.NO_CONTENT)
+                    .body(new ApiResponse("Error", "No se encontraron usuarios."));
         }
     }
 
+
     @PostMapping("/usuario")
-    public ResponseEntity<?> save(@RequestBody Usuario usuario) {
+    public ResponseEntity<ApiResponse> save(@RequestBody Usuario usuario) {
         // Verificar si el correo electrónico ya existe
         if (usuarioService.existsByEmail(usuario.getEmail())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("El correo electrónico ya está registrado.");
+                    .body(new ApiResponse("Error", "El correo electrónico ya está registrado."));
         }
 
         // Si el correo electrónico no existe, intentar guardar el usuario
         Usuario savedUsuario = usuarioService.save(usuario);
         if (savedUsuario != null) {
-            return ResponseEntity.status(HttpStatus.CREATED).body(savedUsuario);
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(new ApiResponse("Success", savedUsuario));
         } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse("Error", "Error al intentar guardar el usuario."));
         }
     }
 
     @PutMapping("/usuario")
-    public ResponseEntity<Usuario> update(@RequestBody Usuario usuario) {
+    public ResponseEntity<ApiResponse> update(@RequestBody Usuario usuario) {
         Usuario savedUsuario = usuarioService.save(usuario);
 
         if (savedUsuario != null) {
-            return ResponseEntity.status(HttpStatus.CREATED).body(savedUsuario);
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(new ApiResponse("Success", savedUsuario));
         } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse("Error", "Error al intentar actualizar el usuario."));
         }
     }
 
     @GetMapping("/usuario")
-    public ResponseEntity<Usuario> getUserById(@RequestParam("id") int id) {
+    public ResponseEntity<ApiResponse> getUserById(@RequestParam("id") int id) {
         Optional<Usuario> optionalUsuario = usuarioService.getId(id);
-
-        if (optionalUsuario.isPresent()) {
-            return ResponseEntity.ok(optionalUsuario.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return optionalUsuario.map(usuario -> ResponseEntity.ok(new ApiResponse("Success", usuario))).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+
     @DeleteMapping("/usuario")
-    public ResponseEntity<Void> deleteById(@RequestParam("id") int id) {
+    public ResponseEntity<ApiResponse> deleteById(@RequestParam("id") int id) {
         Optional<Usuario> optionalUsuario = usuarioService.getId(id);
 
         if (optionalUsuario.isPresent()) {
