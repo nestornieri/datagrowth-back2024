@@ -18,7 +18,17 @@ public class Usuario {
 	private String password;
     private String nombre;
 	private String apellido;
+	private String celular;
 	private String tipo;
+
+	public String getCelular() {
+		return celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+
 
 	public Integer getId() {
 		return id;
