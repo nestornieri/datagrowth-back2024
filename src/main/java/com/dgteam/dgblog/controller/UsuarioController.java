@@ -75,9 +75,11 @@ public class UsuarioController {
 
     @GetMapping("/usuario")
     public ResponseEntity<ApiResponse> getUserById(@RequestParam("id") int id) {
-        Optional<Usuario> optionalUsuario = usuarioService.getId(id);
-        return optionalUsuario.map(usuario -> ResponseEntity.ok(new ApiResponse("Success", usuario))).orElseGet(() -> ResponseEntity.notFound().build());
+        return usuarioService.getId(id)
+                .map(usuario -> ResponseEntity.ok(new ApiResponse("Success", usuario)))
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse("Error", "Usuario no encontrado")));
     }
+
 
 
     @DeleteMapping("/usuario")
